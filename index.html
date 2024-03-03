@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>  
+    <style>
+        #library {
+            display: grid;
+            grid-template: repeat(3, 1fr)/repeat(5, 1fr);
+            gap: 24px;
+        }
+        .book_container {
+            height: 200px;
+            border: solid 1px black;
+        }
+    </style>
 </head>
 <body>
     <form>
@@ -14,17 +25,17 @@
         <input type="text" id="author">
         <ul>
             <li>
-                <input type="radio" id="read" name="state" value="1">
+                <input type="radio" id="read" name="state" value="I have read the book">
                 <label for="read">Have read</label>
             </li>
             <li>
-                <input type="radio" id="want" name="state" value="0">
+                <input type="radio" id="want" name="state" value="I want to read the book">
                 <label for="want">Want to read</label>
             </li>
         </ul>
         <button id="create">Create</button>
     </form>
-    <div class="library">
+    <div id="library">
     </div>
 </body>
 </html>
