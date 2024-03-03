@@ -1,7 +1,10 @@
 const myLibrary=[];
-
-function Book(title){
+const library = document.getElementById("library");
+function Book(title,author,read){
     this.title = title;
+    this.author = author;
+    this.read = readOrNot(read);
+
 };
 
 function creatNewBook(){
@@ -10,13 +13,19 @@ function creatNewBook(){
     let i= myLibrary.length;
 
     myLibrary[i] = new Book(
-        document.getElementById("title").value
+        document.getElementById("title").value,
+        document.getElementById("author").value,
+        document.querySelector("input[name='state']:checked").value
     )
 
     console.log(myLibrary);
-    console.log(myLibrary[0]);
+    console.log(myLibrary[i]);
     
 };
+
+function readOrNot(value){
+    return value==="1"? true: false;
+}
 
 function toggleReadOrNot(i){
 };
