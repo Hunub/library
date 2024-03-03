@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>  
+</head>
+<body>
+    <form>
+        <label for="title">Book Title</label>
+        <input type="text" id="title">
+        <label for="author">Author</label>
+        <input type="text" id="author">
+        <ul>
+            <li>
+                <input type="radio" id="read" name="state" value="1">
+                <label for="read">Have read</label>
+            </li>
+            <li>
+                <input type="radio" id="want" name="state" value="0">
+                <label for="want">Want to read</label>
+            </li>
+        </ul>
+        <button id="create">Create</button>
+    </form>
+    <div class="shelf">
+    </div>
+</body>
+</html>
