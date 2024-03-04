@@ -6,6 +6,8 @@ function Book(title,author,read){
     this.read = readToBoolean(read);
 };
 
+
+
 function creatNewBook(){
     event.preventDefault();
 
@@ -16,27 +18,30 @@ function creatNewBook(){
 
     myLibrary[i] = new Book(title_i,author_i,read_i)
 
-    console.log(myLibrary);
-    console.log(myLibrary[i]);
+    renderLibrary(i);
+}
+
+function renderLibrary(i){
 
     const bookContainer = document.createElement("div");
     bookContainer.setAttribute('class','book_container');
     library.appendChild(bookContainer);
 
     const bookTitle = document.createElement("h2");
-    bookTitle.innerText = title_i;
+    bookTitle.innerText = myLibrary[i].title;
     bookContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement("h4");
-    bookAuthor.innerText = author_i;
+    bookAuthor.innerText = myLibrary[i].author;
     bookContainer.appendChild(bookAuthor);
 
     const bookRead = document.createElement("p");
-    bookRead.innerText = read_i;
+    bookRead.innerText = myLibrary[i].read;
     bookContainer.appendChild(bookRead);
 
     const deleteBtn= document.createElement("button");
     deleteBtn.innerText = "DELETE";
+    deleteBtn.addEventListener("click", ()=>{console.log(myLibrary[i])});
     bookContainer.appendChild(deleteBtn);
     
 };
@@ -45,11 +50,6 @@ function readToBoolean(value){
     return value==="I have read the book"? true: false;
 }
 
-function toggleReadOrNot(i){
-};
-
-function deleteBook(i){
-}
 
 const button = document.getElementById('create');
 
