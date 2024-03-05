@@ -18,13 +18,20 @@ function creatNewBook(){
 
     myLibrary[i] = new Book(title_i,author_i,read_i)
 
-    renderLibrary(i);
+    renderLibrary(myLibrary);
 }
-
-function renderLibrary(i){
+function renderLibrary(array){
+    library.innerHTML="";
+    let l = array.length;
+    for(i=0; i<l; i++){
+        renderBook(i);
+    }
+}
+function renderBook(i){
 
     const bookContainer = document.createElement("div");
     bookContainer.setAttribute('class','book_container');
+    bookContainer.setAttribute('index',`${i}`);
     library.appendChild(bookContainer);
 
     const bookTitle = document.createElement("h2");
@@ -41,7 +48,7 @@ function renderLibrary(i){
 
     const deleteBtn= document.createElement("button");
     deleteBtn.innerText = "DELETE";
-    deleteBtn.addEventListener("click", ()=>{console.log(myLibrary[i])});
+    deleteBtn.addEventListener("click", deleteBook);
     bookContainer.appendChild(deleteBtn);
     
 };
@@ -49,6 +56,10 @@ function renderLibrary(i){
 function readToBoolean(value){
     return value==="I have read the book"? true: false;
 }
+
+function deleteBook(event){
+    console.log(event.target.parentNode.getAttribute("index"));
+};
 
 
 const button = document.getElementById('create');
