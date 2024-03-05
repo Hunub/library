@@ -58,7 +58,10 @@ function readToBoolean(value){
 }
 
 function deleteBook(event){
-    console.log(event.target.parentNode.getAttribute("index"));
+    let i = event.target.parentNode.getAttribute("index");
+    myLibrary.splice(i,1);
+
+    renderLibrary(myLibrary);
 };
 
 
