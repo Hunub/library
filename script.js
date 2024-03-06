@@ -1,4 +1,5 @@
 const myLibrary=[];
+
 const library = document.getElementById("library");
 function Book(title,author,read){
     this.title = title;
@@ -6,9 +7,7 @@ function Book(title,author,read){
     this.read = readToBoolean(read);
 };
 
-
-
-function creatNewBook(){
+function creatNewBook(event){
     event.preventDefault();
 
     let i= myLibrary.length;
@@ -42,9 +41,14 @@ function renderBook(i){
     bookAuthor.innerText = myLibrary[i].author;
     bookContainer.appendChild(bookAuthor);
 
-    const bookRead = document.createElement("p");
-    bookRead.innerText = myLibrary[i].read;
-    bookContainer.appendChild(bookRead);
+    // const bookRead = document.createElement("p");
+    // bookRead.innerText = myLibrary[i].read;
+    // bookContainer.appendChild(bookRead);
+
+    const toggleReadBtn = document.createElement("button");
+    toggleReadBtn.innerText = toggleReadDisplay(myLibrary[i]);
+    toggleReadBtn.addEventListener("click", toggleRead);
+    bookContainer.appendChild(toggleReadBtn);
 
     const deleteBtn= document.createElement("button");
     deleteBtn.innerText = "DELETE";
@@ -57,12 +61,23 @@ function readToBoolean(value){
     return value==="I have read the book"? true: false;
 }
 
+function toggleReadDisplay(item){
+    return item.read ? "Read" : "Not read" ;
+}
+
 function deleteBook(event){
     let i = event.target.parentNode.getAttribute("index");
     myLibrary.splice(i,1);
 
     renderLibrary(myLibrary);
 };
+
+function toggleRead(event){
+    let i = event.target.parentNode.getAttribute("index");
+    myLibrary[i].read? myLibrary[i].read = false: myLibrary[i].read = true;
+
+    renderLibrary(myLibrary);
+}
 
 
 const button = document.getElementById('create');
