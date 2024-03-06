@@ -1,6 +1,28 @@
 const myLibrary=[];
 
+const dialog = document.querySelector("dialog");
+const addBtn = document.getElementById("add");
+const closeBtn = document.getElementById('close');
+
+const createBtn = document.getElementById('create');
+
 const library = document.getElementById("library");
+
+addBtn.addEventListener("click", ()=>{
+    dialog.showModal();
+});
+
+closeBtn.addEventListener("click", ()=>{
+    event.preventDefault();
+    dialog.close();
+});
+
+createBtn.addEventListener("click", creatNewBook);
+createBtn.addEventListener("click", ()=>{
+    dialog.close();
+});
+
+
 function Book(title,author,read){
     this.title = title;
     this.author = author;
@@ -18,14 +40,16 @@ function creatNewBook(event){
     myLibrary[i] = new Book(title_i,author_i,read_i)
 
     renderLibrary(myLibrary);
-}
+};
+
 function renderLibrary(array){
     library.innerHTML="";
     let l = array.length;
     for(i=0; i<l; i++){
         renderBook(i);
-    }
-}
+    };
+};
+
 function renderBook(i){
 
     const bookContainer = document.createElement("div");
@@ -59,11 +83,11 @@ function renderBook(i){
 
 function readToBoolean(value){
     return value==="I have read the book"? true: false;
-}
+};
 
 function toggleReadDisplay(item){
-    return item.read ? "Read" : "Not read" ;
-}
+    return item.read ? "Read" : "Not read";
+};
 
 function deleteBook(event){
     let i = event.target.parentNode.getAttribute("index");
@@ -80,6 +104,3 @@ function toggleRead(event){
 }
 
 
-const button = document.getElementById('create');
-
-button.addEventListener("click", creatNewBook);

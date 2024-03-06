@@ -18,23 +18,29 @@
     </style>
 </head>
 <body>
-    <form>
-        <label for="title">Book Title</label>
-        <input type="text" id="title">
-        <label for="author">Author</label>
-        <input type="text" id="author">
-        <ul>
-            <li>
-                <input type="radio" id="read" name="state" value="I have read the book">
-                <label for="read">Have read</label>
-            </li>
-            <li>
-                <input type="radio" id="want" name="state" value="I want to read the book">
-                <label for="want">Want to read</label>
-            </li>
-        </ul>
-        <button id="create">Create</button>
-    </form>
+    <button id="add">Add</button>
+    <dialog>
+
+        <form>
+            <label for="title">Book Title</label>
+            <input type="text" id="title">
+            <label for="author">Author</label>
+            <input type="text" id="author">
+            <ul>
+                <li>
+                    <input type="radio" id="read" name="state" value="I have read the book">
+                    <label for="read">Have read</label>
+                </li>
+                <li>
+                    <input type="radio" id="want" name="state" value="I want to read the book">
+                    <label for="want">Want to read</label>
+                </li>
+            </ul>
+            <button id="create">Create</button>
+            <button id="close">Close</button>
+        </form>
+
+    </dialog>
     <div id="library">
     </div>
 </body>
