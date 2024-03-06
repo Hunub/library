@@ -4,6 +4,7 @@ const dialog = document.querySelector("dialog");
 const addBtn = document.getElementById("add");
 const closeBtn = document.getElementById('close');
 
+const form = document.querySelector("form");
 const createBtn = document.getElementById('create');
 
 const library = document.getElementById("library");
@@ -12,7 +13,7 @@ addBtn.addEventListener("click", ()=>{
     dialog.showModal();
 });
 
-closeBtn.addEventListener("click", ()=>{
+closeBtn.addEventListener("click", (event)=>{
     event.preventDefault();
     dialog.close();
 });
@@ -20,6 +21,7 @@ closeBtn.addEventListener("click", ()=>{
 createBtn.addEventListener("click", creatNewBook);
 createBtn.addEventListener("click", ()=>{
     dialog.close();
+    form.reset();
 });
 
 
@@ -53,32 +55,31 @@ function renderLibrary(array){
 function renderBook(i){
 
     const bookContainer = document.createElement("div");
-    bookContainer.setAttribute('class','book_container');
+    bookContainer.setAttribute('class','book-container');
     bookContainer.setAttribute('index',`${i}`);
     library.appendChild(bookContainer);
 
     const bookTitle = document.createElement("h2");
+    bookTitle.setAttribute('class','book-title');
     bookTitle.innerText = myLibrary[i].title;
     bookContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement("h4");
+    bookAuthor.setAttribute('class','book-author');
     bookAuthor.innerText = myLibrary[i].author;
     bookContainer.appendChild(bookAuthor);
 
-    // const bookRead = document.createElement("p");
-    // bookRead.innerText = myLibrary[i].read;
-    // bookContainer.appendChild(bookRead);
-
     const toggleReadBtn = document.createElement("button");
+    toggleReadBtn.setAttribute('class','book-read');
     toggleReadBtn.innerText = toggleReadDisplay(myLibrary[i]);
     toggleReadBtn.addEventListener("click", toggleRead);
     bookContainer.appendChild(toggleReadBtn);
 
     const deleteBtn= document.createElement("button");
+    deleteBtn.setAttribute('class','book-delete');
     deleteBtn.innerText = "DELETE";
     deleteBtn.addEventListener("click", deleteBook);
     bookContainer.appendChild(deleteBtn);
-    
 };
 
 function readToBoolean(value){
