@@ -59,32 +59,35 @@ function renderBook(i){
         bookContainer.setAttribute('class','book-container complete');
     }else{
         bookContainer.setAttribute('class','book-container');
-    }
-
+    };
     bookContainer.setAttribute('index',`${i}`);
     library.appendChild(bookContainer);
+
+    const textContainer = document.createElement("div");
+    bookContainer.appendChild(textContainer);
 
     const bookTitle = document.createElement("h2");
     bookTitle.setAttribute('class','book-title');
     bookTitle.innerText = myLibrary[i].title;
-    bookContainer.appendChild(bookTitle);
+    textContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement("h4");
     bookAuthor.setAttribute('class','book-author');
     bookAuthor.innerText = myLibrary[i].author;
-    bookContainer.appendChild(bookAuthor);
-
-    const toggleReadBtn = document.createElement("button");
-    toggleReadBtn.setAttribute('class','book-read');
-    toggleReadBtn.innerText = toggleReadDisplay(myLibrary[i]);
-    toggleReadBtn.addEventListener("click", toggleRead);
-    bookContainer.appendChild(toggleReadBtn);
+    textContainer.appendChild(bookAuthor);
 
     const deleteBtn= document.createElement("button");
     deleteBtn.setAttribute('class','book-delete');
-    deleteBtn.innerText = "DELETE";
+    deleteBtn.innerHTML= '<span class="material-symbols-outlined">close</span>';
     deleteBtn.addEventListener("click", deleteBook);
     bookContainer.appendChild(deleteBtn);
+
+    const toggleReadBtn = document.createElement("button");
+    toggleReadBtn.setAttribute('class','book-read');
+    toggleReadBtn.innerHTML= '<span class="material-symbols-outlined">check</span>';
+    // toggleReadBtn.innerText = toggleReadDisplay(myLibrary[i]);
+    toggleReadBtn.addEventListener("click", toggleRead);
+    bookContainer.appendChild(toggleReadBtn);
 };
 
 function readToBoolean(value){
