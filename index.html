@@ -6,42 +6,197 @@
     <title>Document</title>
     <script src="script.js" defer></script>  
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+
+        dialog {
+            height: 32rem;
+            width: 24rem;
+            padding: 8rem 4rem;
+            border: 0;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2rem;
+        }
+
+        dialog::backdrop {
+            background-color: rgba(212, 132, 100, 0.678);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #page {
+            display: flex;
+            height: 100vh;
+            background-color: antiquewhite;
+            overflow: hidden;
+
+        }
+
+        .side-bar {
+            flex: 0 1 12rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border: solid 1px pink;
+        }
+
+        .logo {
+            height: 4rem;
+            width: 100px;
+            background-color: black;
+        }
+        .add {
+            height: 16rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        #add {
+            font-size: 4rem;
+            height: 5rem;
+            width: 5rem;
+            border-radius: 2.5rem;
+            border: none;
+            background-color: black;
+            color: antiquewhite;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: start;
+            flex: 1 1 100%;
+            border: solid 1px pink;
+            overflow: hidden;
+        }
+        .top-bar {
+            width: 100%;
+            display: flex;
+            flex: 0 0 4rem;
+            border: solid 1px pink;
+        }
+
+        .bottom-main {
+            width: 100%;
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-items: start;
+            overflow-y: scroll;
+        }
+
+        .bottom-main::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .bottom-main::-webkit-scrollbar-track {
+            border: none;
+            background-color: none;
+        }
+
+        .bottom-main::-webkit-scrollbar-thumb {
+            background-color: rgb(7, 7, 7); 
+            border-radius: 5px;
+        }
+
+        .bottom-main::-webkit-scrollbar-thumb:hover {
+            background: #e92705; 
+        }
+
+        .title {
+            flex: 0 0 16rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: start;
+        }
+
+        .title h1 {
+            font-size: 5rem;
+            line-height: 5rem;
+            margin: 0 auto;
+        }
+
+        .library-container {
+            width: 100%;
+            padding-top: 2rem;
+            padding-right: 10rem;
+        }
+
         #library {
             display: grid;
-            grid-template: repeat(3, 1fr)/repeat(5, 1fr);
-            gap: 24px;
+            grid-template: repeat(3, 1fr)/repeat(4, 1fr);
+            gap: 1rem;
         }
         .book-container {
-            height: 200px;
-            border: solid 1px black;
+            padding: 1.5rem;
+            height: 18rem;
+            overflow: auto;
+            border-radius: 1rem;
+            background-color: white;
         }
+
+        .book-container.complete {
+            background-color: #f8492a;
+        }
+
     </style>
 </head>
 <body>
-    <button id="add">Add</button>
     <dialog>
-
         <form>
             <label for="title">Book Title</label>
             <input type="text" id="title">
             <label for="author">Author</label>
             <input type="text" id="author">
-            <ul>
-                <li>
-                    <input type="radio" id="read" name="state" value="I have read the book">
-                    <label for="read">Have read</label>
-                </li>
-                <li>
-                    <input type="radio" id="want" name="state" value="I want to read the book">
-                    <label for="want">Want to read</label>
-                </li>
-            </ul>
+        
+            <div>
+                <input type="radio" id="read" name="state" value="read">
+                <label for="read">Have read</label>
+            </div>
+            <div>
+                <input type="radio" id="want" name="state" value="not-read">
+                <label for="want">Want to read</label>
+            </div>
             <button id="create">Create</button>
             <button id="close">Close</button>
         </form>
-
     </dialog>
-    <div id="library">
+    <div id="page">
+        <div class="side-bar">
+            <div class="logo"></div>
+            <div class="add"><button id="add">+</button></div>
+            
+        </div>
+        <div class="main">
+            <div class="top-bar"></div>
+            <div class="bottom-main">
+                <div class="title">
+                    <h1>MY LIBRARY</h1>
+                </div>
+                <div class="library-container">
+                    <div id="library">
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
+
 </body>
 </html>

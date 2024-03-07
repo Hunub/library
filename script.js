@@ -55,7 +55,12 @@ function renderLibrary(array){
 function renderBook(i){
 
     const bookContainer = document.createElement("div");
-    bookContainer.setAttribute('class','book-container');
+    if(myLibrary[i].read === true){
+        bookContainer.setAttribute('class','book-container complete');
+    }else{
+        bookContainer.setAttribute('class','book-container');
+    }
+
     bookContainer.setAttribute('index',`${i}`);
     library.appendChild(bookContainer);
 
@@ -83,7 +88,7 @@ function renderBook(i){
 };
 
 function readToBoolean(value){
-    return value==="I have read the book"? true: false;
+    return value==="read"? true: false;
 };
 
 function toggleReadDisplay(item){
@@ -98,10 +103,17 @@ function deleteBook(event){
 };
 
 function toggleRead(event){
-    let i = event.target.parentNode.getAttribute("index");
-    myLibrary[i].read? myLibrary[i].read = false: myLibrary[i].read = true;
-
+    let parent = event.target.parentNode
+    let i = parent.getAttribute("index");
+    myLibrary[i].read === false?myLibrary[i].read = true:myLibrary[i].read = false;
     renderLibrary(myLibrary);
 }
 
+myLibrary[0] =  new Book("Moby Dick","Herman Melville","read");
+myLibrary[1] =  new Book("The Count of Monte Cristo","Alexandre Dumas","read");
+myLibrary[2] =  new Book("Don Quixote","Miguel de Cervantes","not-read");
+myLibrary[3] =  new Book("The Courage to be Disliked: The Japanese phenomenon that shows you how to free yourself, change your life and achieve real happiness","Ichiro Kishimi,Fumitake Koga","read");
+myLibrary[4] =  new Book("Walden","Henry David Thoreau","not-read");
+myLibrary[5] =  new Book("The Art of Loving","Erich Fromm","not-read");
 
+renderLibrary(myLibrary);
