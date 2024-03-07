@@ -133,17 +133,19 @@
         .library-container {
             width: 100%;
             padding-top: 2rem;
+            padding-bottom: 8rem;
             padding-right: 10rem;
         }
 
         #library {
             display: grid;
-            grid-template: repeat(3, 1fr)/repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
             gap: 1rem;
         }
+
         .book-container {
             padding: 1.5rem;
-            height: 18rem;
+            height: 20rem;
             overflow: auto;
             border-radius: 1rem;
             background-color: white;
