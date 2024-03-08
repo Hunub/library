@@ -19,27 +19,31 @@
 </head>
 <body>
     <dialog>
-        <form>
-            <label for="title">Book Title</label>
-            <input type="text" id="title">
-            <label for="author">Author</label>
-            <input type="text" id="author">
-            <label for="total-page">Total Page:</label>
-            <input type="text" id="total-page">
-            <label for="cur-page">Current Page:</label>
-            <input type="text" id="cur-page">
+        <div>
+            <h1>ADD A BOOK</h1>
+            <form>
+                
+                <div>
+                    <label for="title">Book Title*</label>
+                    <input type="text" id="title" required placeholder="The name of the book">
+                </div>
+                <div>
+                    <label for="author">Author*</label>
+                    <input type="text" id="author" required placeholder="The name of the author">
+                </div>
+                <div>
+                    <label for="total-page">Total Page*</label>
+                    <input type="number" id="total-page" required placeholder="The number of pages to read">
+                </div>
+                <div>
+                    <label for="cur-page">Current Page</label>
+                    <input type="number" id="cur-page" placeholder="The page number you are at">
+                </div>
+            </form>
+            <button id="close"><span class="material-symbols-outlined">close</span></button>
+            <button id="create"><span class="material-symbols-outlined">check</span></button>
+        </div>
         
-            <div>
-                <input type="radio" id="read" name="state" value="read">
-                <label for="read">Have read</label>
-            </div>
-            <div>
-                <input type="radio" id="want" name="state" value="not-read">
-                <label for="want">Want to read</label>
-            </div>
-            <button id="create">Create</button>
-            <button id="close">Close</button>
-        </form>
     </dialog>
     <div id="page">
         <div class="side-bar">

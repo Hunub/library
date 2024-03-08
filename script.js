@@ -40,9 +40,7 @@ function creatNewBook(event){
     let title_i = document.getElementById("title").value;
     let author_i = document.getElementById("author").value;
     let totalPage_i = document.getElementById("total-page").value;
-    let currentPage_i = document.getElementById("cur-page").value;
-    // let read_i = document.querySelector("input[name='state']:checked").value;
-
+    let currentPage_i = document.getElementById("cur-page").value? document.getElementById("cur-page").value: "0";
     myLibrary[i] = new Book(title_i,author_i,totalPage_i,currentPage_i);
 
     renderLibrary(myLibrary);
