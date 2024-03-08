@@ -6,6 +6,11 @@ body {
     margin: 0;
 }
 
+.dm-serif display-regular {
+    font-family: "DM Serif Display", "Times New Roman";
+    font-weight: 200;
+    font-style: normal;
+  };
 
 dialog {
     height: 32rem;
@@ -113,15 +118,17 @@ form {
 
 .title {
     flex: 0 0 16rem;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: start;
+    font-family: "Times New Roman";
+    font-optical-sizing: auto;
+    font-weight: 300;
 }
 
 .title h1 {
-    font-size: 5rem;
+    font-size: 6rem;
     line-height: 5rem;
     margin: 0 auto;
 }
@@ -145,25 +152,109 @@ form {
     padding: 1rem;
     padding-right: 0.5rem;
     height: 20rem;
-
     border-radius: 1rem;
     background-color: white;
     box-shadow: 3px 5px 10px #cea9a0;
 }
 
-.book-container>div {
-    grid-area: 1/1/2/2;
-    overflow: auto;
+.book-container.complete {
+    background-color: #f8492a;
 }
 
-.book-container>div::-webkit-scrollbar {
+.text-container {
+    grid-area: 1/1/2/2;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    flex: 0;
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin: 0 0 0.3rem;
+}
+
+.book-author {
+    flex: 1;
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+}
+
+.text-container::-webkit-scrollbar {
     width: 0;
 }
 
-.book-container.complete {
-    background-color: #f8492a;
-    
+.page-container {
+    flex: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 1.5rem;
+    padding-bottom: 1rem;
+
 }
+
+.text-container p,
+.text-container div {
+    line-height: 1.5rem;
+    margin: 0;
+}
+
+.book-cur-page {
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding-top: 0.5rem;
+    width: 80px;
+    text-align: center;
+    height: 2.5rem;
+    border-bottom: 1px solid #e92705;
+}
+
+.book-total-page {
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 1.8rem;
+    position: relative;
+    left: -40px;
+}
+
+.complete .book-total-page {
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 1.3rem;
+    left: 0;
+    font-size: 1.3rem;
+}
+
+.slash {
+    font-family: "Cormorant", "Times New Roman";
+    font-weight: 700;
+    font-size: 2rem;
+    position: relative;
+    left: -60px;
+}
+
+.book-dec,
+.book-inc {
+    position: relative;
+    left: -80px;
+    height: 2.5rem;
+    width: 40px;
+}
+
+.book-dec:hover {
+    box-shadow: inset 40px 0 40px -40px #ec361673;
+}
+
+.book-inc:hover {
+    box-shadow: inset -40px 0 40px -40px #a1ec1673;
+}
+
 
 .book-delete,
 .book-read {
@@ -220,4 +311,19 @@ form {
 .complete .book-delete span,
 .complete .book-read span {
     color: rgb(255, 255, 255);
+}
+
+.book-banner {
+    font-family: "Alex Brush";
+    font-weight: lighter;
+    grid-area: 1/2/2/-1;
+    writing-mode:vertical-rl;
+    transform: rotate(180deg);
+    color: white;
+    font-size: 4.8rem;
+    line-height: 3rem;
+    margin: 0;
+    overflow: visible;
+    min-height: 0;
+    justify-self: center;
 }
